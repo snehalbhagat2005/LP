@@ -1,0 +1,197 @@
+public class CalculatorController {
+
+    public Decimal num1 {get; set;}
+    public Decimal num2 {get; set;}
+    public Decimal result {get; set;}
+
+    // Addition
+    public void add() {
+        result = num1 + num2;
+    }
+
+    // Subtraction
+    public void subtract() {
+        result = num1 - num2;
+    }
+
+    // Multiplication
+    public void multiply() {
+        result = num1 * num2;
+    }
+
+    // Division
+    public void divide() {
+
+        if(num2 != 0) {
+            result = num1 / num2;
+        }
+        else {
+            result = 0;
+        }
+    }
+
+    // Clear
+    public void clearData() {
+
+        num1 = null;
+        num2 = null;
+        result = null;
+    }
+}
+
+
+
+
+
+
+
+
+<apex:page controller="CalculatorController" showHeader="false" sidebar="false">
+
+<html>
+<head>
+
+    <style>
+
+        body{
+            background:#f4f6f9;
+            font-family:Arial;
+        }
+
+        .container{
+
+            width:400px;
+            margin:80px auto;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0px 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .title{
+
+            text-align:center;
+            font-size:28px;
+            font-weight:bold;
+            color:#2e86de;
+            margin-bottom:30px;
+        }
+
+        .inputBox{
+
+            width:100%;
+            padding:12px;
+            margin-top:10px;
+            margin-bottom:20px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            font-size:16px;
+        }
+
+        .btn{
+
+            padding:10px 18px;
+            margin:5px;
+            border:none;
+            border-radius:8px;
+            font-size:15px;
+            cursor:pointer;
+            color:white;
+        }
+
+        .addBtn{
+            background:#27ae60;
+        }
+
+        .subBtn{
+            background:#e67e22;
+        }
+
+        .mulBtn{
+            background:#8e44ad;
+        }
+
+        .divBtn{
+            background:#2980b9;
+        }
+
+        .clearBtn{
+            background:#c0392b;
+        }
+
+        .resultBox{
+
+            margin-top:25px;
+            padding:15px;
+            background:#ecf0f1;
+            border-radius:10px;
+            text-align:center;
+            font-size:22px;
+            font-weight:bold;
+            color:#2c3e50;
+        }
+
+        .buttonSection{
+            text-align:center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="title">
+            Simple Calculator
+        </div>
+
+        <apex:form>
+
+            <apex:inputText value="{!num1}"
+                            styleClass="inputBox"
+                            html-placeholder="Enter First Number"/>
+
+            <apex:inputText value="{!num2}"
+                            styleClass="inputBox"
+                            html-placeholder="Enter Second Number"/>
+
+            <div class="buttonSection">
+
+                <apex:commandButton value="+"
+                                    action="{!add}"
+                                    styleClass="btn addBtn"/>
+
+                <apex:commandButton value="-"
+                                    action="{!subtract}"
+                                    styleClass="btn subBtn"/>
+
+                <apex:commandButton value="×"
+                                    action="{!multiply}"
+                                    styleClass="btn mulBtn"/>
+
+                <apex:commandButton value="÷"
+                                    action="{!divide}"
+                                    styleClass="btn divBtn"/>
+
+                <apex:commandButton value="Clear"
+                                    action="{!clearData}"
+                                    styleClass="btn clearBtn"/>
+
+            </div>
+
+            <div class="resultBox">
+
+                Result : {!result}
+
+            </div>
+
+        </apex:form>
+
+    </div>
+
+</body>
+</html>
+
+</apex:page>
